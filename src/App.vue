@@ -7,6 +7,8 @@
     prepend
     app
     permanent
+    disable-resize-watcher
+    
     >
     <template v-slot:prepend>
           <v-img
