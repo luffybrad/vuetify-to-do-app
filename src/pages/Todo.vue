@@ -1,6 +1,7 @@
 <template>
     <div class="todo">
 
+
       <v-text-field
             v-model="newTaskTitle"
             @click:append-inner="addTask()"
@@ -9,8 +10,8 @@
             append-inner-icon="mdi-plus"
             label="Add task"
             variant="underlined"
-            clearable
             hide-details
+            clearable
           ></v-text-field>
 
   
@@ -26,12 +27,11 @@
         :value="task.done"
 
         @click="doneTask(task.id)"
-        class="rounded"
-
-        :class="{
-          'blue lighten-5' : task.done,
-          'red lighten-5' : !task.done
+        
+        :class="{ 
+          'bg-green-lighten-3' : task.done,
         }"
+        
       >
         <template v-slot:prepend >
           <v-list-item-action>
@@ -40,11 +40,18 @@
         </template>
         <template v-slot:append>
           <v-btn
+          v-if="!task.done"
           @click.stop="deleteTask(task.id)"
             color="red lighten-1"
             icon="mdi-delete"
             variant="text"
           ></v-btn>
+          <v-icon
+          v-else
+          color="success"
+          >
+          mdi-check
+          </v-icon>
         </template>
       </v-list-item>
       <v-divider></v-divider>
@@ -54,17 +61,16 @@
   </template>
 
 <script>
+
 export default {
   data() {
       return{
-
     newTaskTitle: '',
     tasks: [
       { id: 1, title: 'Eat' , done: false},
       { id: 2, title: 'Sleep' , done: false},
       { id: 3, title: 'Code', done: false},
     ],
-
   }
 },
   methods: {
@@ -83,12 +89,10 @@ export default {
     },
     deleteTask(id){
       this.tasks = this.tasks.filter(task => task.id !== id)
+    },
+    searchTasks(title){
+      this.tasks = this.tasks.filter(task => task.title == title)
     }
   }
 }
 </script>
-  
-  <script setup>
-
-  </script>
-  

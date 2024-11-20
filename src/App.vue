@@ -4,15 +4,22 @@
 
     <v-navigation-drawer
     v-model="drawer"
+    prepend
     app
     permanent
     >
+    <template v-slot:prepend>
+          <v-img
+            src="@/assets/subs.jpeg"
+          ></v-img>
+        </template>
   <v-list-item 
-  prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg"
   nav
   title="My To-Do" 
   subtitle="Enhance your productivity"
-  ></v-list-item>
+  >
+ 
+</v-list-item>
   <v-divider></v-divider>
   <v-list
           density="compact"
@@ -27,11 +34,12 @@
     <v-app-bar
         app
         color="teal-darken-4"
-        density="prominent"
-        image="https://cdn.pixabay.com/photo/2013/07/12/13/56/note-147603_1280.png"
+        density="comfortable"
+        image
       >
         <template v-slot:image>
           <v-img
+            src="@/assets/notes.png"
             gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)"
           ></v-img>
         </template>
@@ -40,32 +48,18 @@
           <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
         </template>
 
-        <v-app-bar-title>Tasks</v-app-bar-title>
+        <v-app-bar-title
+        >Tasks</v-app-bar-title>
 
         <v-spacer></v-spacer>
 
 
-        <v-text-field
-        v-if="isTextFieldVisible"
-        v-model="searchText"
-        append-inner-icon="mdi-close"
-        @click:append-inner="toggleSearchField"
-        placeholder="Search"
-        clearable
-      ></v-text-field>
-
-      <v-btn
-      v-else
-      @click="toggleSearchField"
-       icon>
-        <v-icon
-        style="cursor: pointer;"
-      >
-        mdi-magnify
-      </v-icon>
-      </v-btn>
-      
-
+        <!--conditional searchfield  -->
+          <SearchFIeld
+          v-if="location.name === 'Todo'"
+          v-model="taskTitle"
+          @keyup="console.log(taskTitle)"
+          />
 
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
@@ -81,27 +75,29 @@
 
 <script setup>
   import { ref } from 'vue'
-
+  import SearchFIeld from "./components/SearchFIeld.vue";
+  import { useRoute, useRouter } from 'vue-router';
   const drawer = ref(null)
+
+  const taskTitle = ref("")
+
+
+  const location = useRoute()
 
 </script>
 
+
+
 <script>
+import Todo from './pages/Todo.vue';
+import { components } from 'vuetify/dist/vuetify-labs.js';
+
   export default {
     data() {
       return { 
-      drawer: true,
-      searchText: '',
-      isTextFieldVisible: false,
-    }
-  },
-  methods: {
-    toggleSearchField() {
-      this.isTextFieldVisible = !this.isTextFieldVisible;
-      if (!this.isTextFieldVisible) {
-        this.searchText = ''; // Clear search text when hiding
+      drawer: true
       }
-    },
-  },
+
+  }
   }
 </script>
