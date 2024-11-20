@@ -95,7 +95,7 @@ import { components } from 'vuetify/dist/vuetify-labs.js';
   export default {
     data() {
       return { 
-      drawer: true
+      drawer: false
       }
 
   }
