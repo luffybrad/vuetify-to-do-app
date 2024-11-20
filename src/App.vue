@@ -5,10 +5,7 @@
     <v-navigation-drawer
     v-model="drawer"
     prepend
-    app
-    permanent
-    disable-resize-watcher
-    
+    app    
     >
     <template v-slot:prepend>
           <v-img
@@ -97,7 +94,7 @@ import { components } from 'vuetify/dist/vuetify-labs.js';
   export default {
     data() {
       return { 
-      drawer: false
+      drawer: true
       }
 
   }
