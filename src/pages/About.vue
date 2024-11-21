@@ -1,14 +1,14 @@
 <template>
   <div class="about pa-6">
     <h1>About To-Do </h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis labore ratione repellat suscipit, asperiores ullam ea non, repudiandae rerum velit voluptatum assumenda ut eligendi officia illo ipsa commodi iusto magnam.
+        <p class="py-2">
+    Welcome to To-do, your go-to app for effortless task management! Designed for busy lives.
     </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sequi ratione asperiores, obcaecati itaque eius perferendis? Aliquid provident accusamus aperiam ex reiciendis eligendi autem perferendis tenetur, corrupti, iusto dolores labore!
+    <p class="py-2">
+    To-do helps you organize your tasks, set priorities, and stay on track with ease. Our intuitive interface makes it simple to create and customize on to-do lists , whether for work projects or personal goals.
     </p>
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita nam iste explicabo ab pariatur maiores dolorum aliquam adipisci natus, cupiditate veritatis voluptate incidunt eius ipsam ipsa soluta nemo velit nulla?
+    <p class="py-2">
+    At To-do, we believe that productivity leads to success and fulfillment.  Let’s make every day productive together!
     </p>
   </div>
 </template>
