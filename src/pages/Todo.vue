@@ -101,16 +101,8 @@ computed: {
     },
     deleteTask(id){
       this.tasks = this.tasks.filter(task => task.id !== id)
-    },
-    handleSearchQuery(query){
-      console.log("Searching for: ",query )
-      this.tasks = this.tasks.filter(task => task.title == query)
-    }
-  },
-  watch: {
-    searchQuery(newQuery){
-      console.log(newQuery)
     }
   }
+ 
 }
 </script>

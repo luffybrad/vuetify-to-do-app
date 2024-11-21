@@ -57,7 +57,6 @@
           <SearchFIeld
           v-if="location.name === 'Todo'"
           v-model="searchQuery"
-          @keyup="triggerSearch"
           />
 
         <v-btn icon>
@@ -92,10 +91,6 @@ import ToDo from './pages/Todo.vue';
       drawer: true,
       searchQuery: ''
       }
-  },
-  methods: {
-    triggerSearch(){
-    }
   }
   }
 </script>
