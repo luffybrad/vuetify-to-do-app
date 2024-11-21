@@ -56,8 +56,8 @@
         <!--conditional searchfield  -->
           <SearchFIeld
           v-if="location.name === 'Todo'"
-          v-model="taskTitle"
-          @keyup="console.log(taskTitle)"
+          v-model="searchQuery"
+          @keyup="triggerSearch"
           />
 
         <v-btn icon>
@@ -67,19 +67,15 @@
 
     <v-main>
       <!--  routing -->
-      <router-view></router-view>
+      <router-view :search-query="searchQuery"></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
   import { ref } from 'vue'
-  import SearchFIeld from "./components/SearchFIeld.vue";
   import { useRoute, useRouter } from 'vue-router';
   const drawer = ref(null)
-
-  const taskTitle = ref("")
-
 
   const location = useRoute()
 
@@ -88,15 +84,18 @@
 
 
 <script>
-import Todo from './pages/Todo.vue';
-import { components } from 'vuetify/dist/vuetify-labs.js';
+import ToDo from './pages/Todo.vue';
 
   export default {
     data() {
       return { 
-      drawer: true
+      drawer: true,
+      searchQuery: ''
       }
-
+  },
+  methods: {
+    triggerSearch(){
+    }
   }
   }
 </script>

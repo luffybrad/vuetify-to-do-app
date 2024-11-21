@@ -19,7 +19,7 @@
       lines="one"
       select-strategy="leaf"
       class="pt-0"
-      v-for="task in tasks"
+      v-for="task in filteredTasks"
     >
       <v-list-item
         :key="task.id"
@@ -73,6 +73,18 @@ export default {
     ],
   }
 },
+props: {
+  searchQuery : ""
+},
+computed: {
+  filteredTasks(){
+    if (!this.searchQuery){
+      return this.tasks;
+    }
+    const lowerCaseQuery = this.searchQuery.toLowerCase();
+    return this.tasks.filter(task => task.title.toLowerCase().includes(lowerCaseQuery))
+  }
+},
   methods: {
     addTask(){
       let newTask = {
@@ -90,8 +102,14 @@ export default {
     deleteTask(id){
       this.tasks = this.tasks.filter(task => task.id !== id)
     },
-    searchTasks(title){
-      this.tasks = this.tasks.filter(task => task.title == title)
+    handleSearchQuery(query){
+      console.log("Searching for: ",query )
+      this.tasks = this.tasks.filter(task => task.title == query)
+    }
+  },
+  watch: {
+    searchQuery(newQuery){
+      console.log(newQuery)
     }
   }
 }
